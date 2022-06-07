@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Registroentrada;
+use App\Models\Herramienta;
 use Illuminate\Http\Request;
 
 /**

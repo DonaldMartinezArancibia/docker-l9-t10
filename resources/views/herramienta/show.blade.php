@@ -21,6 +21,10 @@
                     <div class="card-body">
                         
                         <div class="form-group">
+                            <strong>Identificador Interno:</strong>
+                            {{ $herramienta->IdInterno }}
+                        </div>
+                        <div class="form-group">
                             <strong>Serie:</strong>
                             {{ $herramienta->Serie }}
                         </div>

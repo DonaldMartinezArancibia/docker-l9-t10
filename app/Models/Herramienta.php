@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Herramienta
  *
  * @property $id
+ * @property $IdInterno
  * @property $Serie
  * @property $Nombre
  * @property $Modelo
@@ -24,11 +25,12 @@ class Herramienta extends Model
 {
     
     static $rules = [
-		'Serie' => 'required',
-		'Nombre' => 'required',
+		'IdInterno' => ['required','unique:herramientas'],
+        'Serie' => 'required',
+		'Nombre' => ['required','unique:herramientas'],
 		'Modelo' => 'required',
 		'Categoria' => 'required',
-		'Factura' => 'required',
+		'Factura' => ['required','unique:herramientas']
     ];
 
     protected $perPage = 20;
@@ -38,7 +40,7 @@ class Herramienta extends Model
      *
      * @var array
      */
-    protected $fillable = ['Serie','Nombre','Modelo','Categoria','Factura'];
+    protected $fillable = ['IdInterno','Serie','Nombre','Modelo','Categoria','Factura'];
 
 
     /**

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('herramientas', function (Blueprint $table) {
             $table->engine="InnoDB";
             $table->bigIncrements('id');
+            $table->char("IdInterno");
             $table->char("Serie");
             $table->char("Nombre");
             $table->char("Modelo");

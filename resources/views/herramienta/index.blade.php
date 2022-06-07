@@ -37,6 +37,7 @@
                                         <th>No</th>
                                         
 										<th>Serie</th>
+                                        <th>Identificador Interno</th>
 										<th>Nombre</th>
 										<th>Modelo</th>
 										<th>Categoria</th>
@@ -50,7 +51,8 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $herramienta->Serie }}</td>
+											<td>{{ $herramienta->IdInterno }}</td>
+                                            <td>{{ $herramienta->Serie }}</td>
 											<td>{{ $herramienta->Nombre }}</td>
 											<td>{{ $herramienta->Modelo }}</td>
 											<td>{{ $herramienta->Categoria }}</td>

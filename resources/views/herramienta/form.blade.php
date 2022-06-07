@@ -2,6 +2,11 @@
     <div class="box-body">
         
         <div class="form-group">
+            {{ Form::label('Identificador Interno') }}
+            {{ Form::text('IdInterno', $herramienta->IdInterno, ['class' => 'form-control' . ($errors->has('IdInterno') ? ' is-invalid' : ''), 'placeholder' => 'IdInterno']) }}
+            {!! $errors->first('IdInterno', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
             {{ Form::label('Serie') }}
             {{ Form::text('Serie', $herramienta->Serie, ['class' => 'form-control' . ($errors->has('Serie') ? ' is-invalid' : ''), 'placeholder' => 'Serie']) }}
             {!! $errors->first('Serie', '<div class="invalid-feedback">:message</div>') !!}
