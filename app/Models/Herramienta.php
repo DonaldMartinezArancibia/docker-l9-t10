@@ -26,11 +26,11 @@ class Herramienta extends Model
     
     static $rules = [
 		'IdInterno' => ['required','unique:herramientas'],
-        'Serie' => 'required',
-		'Nombre' => ['required','unique:herramientas'],
+        'Serie' => ['required','unique:herramientas'],
+		'Nombre' => 'required',
 		'Modelo' => 'required',
 		'Categoria' => 'required',
-		'Factura' => ['required','unique:herramientas']
+		'Factura' => ['required','unique:herramientas'],
     ];
 
     protected $perPage = 20;
