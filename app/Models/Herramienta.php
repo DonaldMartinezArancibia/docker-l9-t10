@@ -51,5 +51,10 @@ class Herramienta extends Model
         return $this->hasMany('App\Models\Registrosalida', 'herramientas_id', 'id');
     }
     
+    public function registroentradas()
+    {
+        return $this->hasMany('App\Models\Registroentrada', 'herramientas_id', 'id');
+    }
+    
 
 }

@@ -37,6 +37,9 @@
                             <a class="nav-link" href="{{ route('herramientas.index') }}">{{ __('Herramientas') }}</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('empleados.index') }}">{{ __('Empleados') }}</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('registrosalidas.index') }}">{{ __('Registros de Salidas') }}</a>
                         </li>
                         <li class="nav-item">

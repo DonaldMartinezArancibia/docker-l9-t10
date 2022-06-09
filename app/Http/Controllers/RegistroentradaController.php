@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Registroentrada;
 use App\Models\Herramienta;
+use App\Models\Empleado;
 use Illuminate\Http\Request;
 
 /**
@@ -33,8 +34,9 @@ class RegistroentradaController extends Controller
     public function create()
     {
         $registroentrada = new Registroentrada();
+        $empleados=Empleado::select('Nombre','PrimerApellido')->paginate();
         $herramientas=Herramienta::pluck('Nombre', 'id');
-        return view('registroentrada.create', compact('registroentrada','herramientas'));
+        return view('registroentrada.create', compact('registroentrada','herramientas'),compact('registroentrada','empleados'));
     }
 
     /**
@@ -75,8 +77,9 @@ class RegistroentradaController extends Controller
     public function edit($id)
     {
         $registroentrada = Registroentrada::find($id);
+        $empleados=Empleado::pluck('Nombre','PrimerApellido','SegundoApellido','id');
         $herramientas=Herramienta::pluck('Nombre', 'id');
-        return view('registroentrada.edit', compact('registroentrada','herramientas'));
+        return view('registroentrada.edit', compact('registroentrada','herramientas'),compact('registroentrada','empleados'));
     }
 
     /**

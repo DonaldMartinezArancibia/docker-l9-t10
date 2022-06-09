@@ -23,6 +23,7 @@ class Registroentrada extends Model
     
     static $rules = [
 		'herramientas_id' => 'required',
+        'empleados_id' => 'required',
 		'FechaEntrada' => 'required',
 		'Observaciones' => 'required',
     ];
@@ -34,7 +35,7 @@ class Registroentrada extends Model
      *
      * @var array
      */
-    protected $fillable = ['herramientas_id','FechaEntrada','Observaciones'];
+    protected $fillable = ['herramientas_id','empleados_id','FechaEntrada','Observaciones'];
 
 
     /**
@@ -43,6 +44,11 @@ class Registroentrada extends Model
     public function herramienta()
     {
         return $this->hasOne('App\Models\Herramienta', 'id', 'herramientas_id');
+    }
+
+    public function empleado()
+    {
+        return $this->hasOne('App\Models\Empleado', 'id', 'empleados_id');
     }
     
 

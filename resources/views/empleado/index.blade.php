@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Registroentrada
+    Empleado
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Registroentrada') }}
+                                {{ __('Empleado') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('registroentradas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('empleados.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -35,28 +35,27 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-										<th>Herramienta</th>
-                                        <th>Empleado</th>
-										<th>Fecha de Entrada</th>
-										<th>Observaciones</th>
+                                        
+										<th>Nombre</th>
+										<th>Primerapellido</th>
+										<th>Segundoapellido</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($registroentradas as $registroentrada)
+                                    @foreach ($empleados as $empleado)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $registroentrada->herramienta->Nombre }}</td>
-                                            <td>{{ $registroentrada->empleado->Nombre; }} {{ $registroentrada->empleado->PrimerApellido; }} {{ $registroentrada->empleado->SegundoApellido; }}</td>
-											<td>{{ $registroentrada->FechaEntrada }}</td>
-											<td>{{ $registroentrada->Observaciones }}</td>
+											<td>{{ $empleado->Nombre }}</td>
+											<td>{{ $empleado->PrimerApellido }}</td>
+											<td>{{ $empleado->SegundoApellido }}</td>
 
                                             <td>
-                                                <form action="{{ route('registroentradas.destroy',$registroentrada->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('registroentradas.show',$registroentrada->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('registroentradas.edit',$registroentrada->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('empleados.destroy',$empleado->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('empleados.show',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('empleados.edit',$empleado->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
@@ -69,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $registroentradas->links() !!}
+                {!! $empleados->links() !!}
             </div>
         </div>
     </div>

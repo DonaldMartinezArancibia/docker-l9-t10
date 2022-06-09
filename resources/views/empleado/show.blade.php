@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $registroentrada->name ?? 'Show Registroentrada' }}
+    {{ $empleado->name ?? 'Show Empleado' }}
 @endsection
 
 @section('content')
@@ -11,30 +11,26 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Registroentrada</span>
+                            <span class="card-title">Show Empleado</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('registroentradas.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('empleados.index') }}"> Back</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Herramientas Id:</strong>
-                            {{ $registroentrada->herramientas_id }}
+                            <strong>Nombre:</strong>
+                            {{ $empleado->Nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Empleados Id:</strong>
-                            {{ $registroentrada->empleados_id }}
+                            <strong>Primerapellido:</strong>
+                            {{ $empleado->PrimerApellido }}
                         </div>
                         <div class="form-group">
-                            <strong>Fechaentrada:</strong>
-                            {{ $registroentrada->FechaEntrada }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Observaciones:</strong>
-                            {{ $registroentrada->Observaciones }}
+                            <strong>Segundoapellido:</strong>
+                            {{ $empleado->SegundoApellido }}
                         </div>
 
                     </div>
