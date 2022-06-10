@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Registroentrada</span>
+                        <span class="card-title">Editando este Registro de Entrada</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('registroentradas.update', $registroentrada->id) }}"  role="form" enctype="multipart/form-data">

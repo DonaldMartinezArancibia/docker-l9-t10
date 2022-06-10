@@ -17,10 +17,12 @@ return new class extends Migration
             $table->engine="InnoDB";
             $table->bigIncrements('id');
             $table->biginteger("herramientas_id")->unsigned();
+            $table->biginteger("empleados_id")->unsigned();
             $table->dateTime("FechaSalida");
             $table->char("Observaciones");
             $table->timestamps();
             $table->foreign("herramientas_id")->references("id")->on("herramientas")->onDelete("cascade");
+            $table->foreign("empleados_id")->references("id")->on("empleados")->onDelete("cascade");
         });
     }
 

@@ -7,6 +7,11 @@
             {!! $errors->first('herramientas_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
+            {{ Form::label('empleados') }}
+            {{ Form::select('empleados_id', $empleados, $registrosalida->empleados_id, ['class' => 'form-control' . ($errors->has('empleados_id') ? ' is-invalid' : ''), 'placeholder' => 'Empleados Id']) }}
+            {!! $errors->first('empleados_id', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
             {{ Form::label('Fecha Salida') }}
             {{ Form::datetimelocal('FechaSalida', $registrosalida->FechaSalida, ['class' => 'form-control' . ($errors->has('FechaSalida') ? ' is-invalid' : ''), 'placeholder' => 'Fechasalida']) }}
             {!! $errors->first('FechaSalida', '<div class="invalid-feedback">:message</div>') !!}
@@ -19,6 +24,6 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Ingresar Registro</button>
+        <button type="submit" class="btn btn-primary">Ingresar Salida</button>
     </div>
 </div>

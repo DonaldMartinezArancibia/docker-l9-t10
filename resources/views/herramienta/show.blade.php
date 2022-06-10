@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Herramienta</span>
+                            <span class="card-title">Mostrando Herramienta</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('herramientas.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('herramientas.index') }}"> Volver</a>
                         </div>
                     </div>
 
@@ -25,16 +25,16 @@
                             {{ $herramienta->IdInterno }}
                         </div>
                         <div class="form-group">
-                            <strong>Serie:</strong>
-                            {{ $herramienta->Serie }}
-                        </div>
-                        <div class="form-group">
                             <strong>Nombre:</strong>
                             {{ $herramienta->Nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Modelo:</strong>
                             {{ $herramienta->Modelo }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Serie:</strong>
+                            {{ $herramienta->Serie }}
                         </div>
                         <div class="form-group">
                             <strong>Categoria:</strong>

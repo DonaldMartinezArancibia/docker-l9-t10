@@ -77,7 +77,7 @@ class RegistroentradaController extends Controller
     public function edit($id)
     {
         $registroentrada = Registroentrada::find($id);
-        $empleados=Empleado::pluck('Nombre','PrimerApellido','SegundoApellido','id');
+        $empleados=Empleado::select('Nombre','PrimerApellido')->paginate();
         $herramientas=Herramienta::pluck('Nombre', 'id');
         return view('registroentrada.edit', compact('registroentrada','herramientas'),compact('registroentrada','empleados'));
     }
