@@ -19,7 +19,10 @@ return new class extends Migration
             $table->biginteger("herramientas_id")->unsigned();
             $table->biginteger("empleados_id")->unsigned();
             $table->dateTime("FechaSalida");
-            $table->char("Observaciones");
+            $table->dateTime("FechaEntrada")->nullable();
+            $table->char("ObservacionesSalida");
+            $table->char("ObservacionesEntrada")->nullable();
+            $table->boolean("Estado")->default(0);
             $table->timestamps();
             $table->foreign("herramientas_id")->references("id")->on("herramientas")->onDelete("cascade");
             $table->foreign("empleados_id")->references("id")->on("empleados")->onDelete("cascade");

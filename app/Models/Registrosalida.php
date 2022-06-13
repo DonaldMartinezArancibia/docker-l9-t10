@@ -9,8 +9,11 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property $id
  * @property $herramientas_id
+ * @property $empleados_id
  * @property $FechaSalida
- * @property $Observaciones
+ * @property $FechaEntrada
+ * @property $ObservacionesSalida
+ * @property $ObservacionesEntrada
  * @property $created_at
  * @property $updated_at
  *
@@ -25,7 +28,7 @@ class Registrosalida extends Model
 		'herramientas_id' => 'required',
         'empleados_id' => 'required',
 		'FechaSalida' => 'required',
-		'Observaciones' => 'required',
+		'ObservacionesSalida' => 'required',
     ];
 
     protected $perPage = 20;
@@ -35,7 +38,7 @@ class Registrosalida extends Model
      *
      * @var array
      */
-    protected $fillable = ['herramientas_id','empleados_id','FechaSalida','Observaciones'];
+    protected $fillable = ['herramientas_id','empleados_id','FechaSalida','ObservacionesSalida'];
 
 
     /**

@@ -38,7 +38,10 @@
 										<th>Herramienta</th>
                                         <th>Empleado</th>
 										<th>Fecha de Salida</th>
-										<th>Observaciones</th>
+                                        <th>Fecha de Entrada</th>
+										<th>Observaciones al registrar la salida</th>
+                                        <th>Observaciones al registrar la entrada</th>
+                                        <th>Estado de la herramienta</th>
 
                                         <th></th>
                                     </tr>
@@ -51,7 +54,10 @@
 											<td>{{ $registrosalida->herramienta->Nombre }}</td>
                                             <td>{{ $registrosalida->empleado->Nombre; }} {{ $registrosalida->empleado->PrimerApellido; }} {{ $registrosalida->empleado->SegundoApellido; }}</td>
 											<td>{{ $registrosalida->FechaSalida }}</td>
-											<td>{{ $registrosalida->Observaciones }}</td>
+                                            <td>{{ $registrosalida->FechaEntrada }}</td>
+											<td>{{ $registrosalida->ObservacionesSalida }}</td>
+                                            <td>{{ $registrosalida->ObservacionesEntrada }}</td>
+                                            <td>{{ $registrosalida->Estado }}</td>
 
                                             <td>
                                                 <form action="{{ route('registrosalidas.destroy',$registrosalida->id) }}" method="POST">

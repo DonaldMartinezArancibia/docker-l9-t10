@@ -25,12 +25,28 @@
                             {{ $registrosalida->herramientas_id }}
                         </div>
                         <div class="form-group">
+                            <strong>Empleados Id:</strong>
+                            {{ $registrosalida->herramientas_id }}
+                        </div>
+                        <div class="form-group">
                             <strong>Fechasalida:</strong>
                             {{ $registrosalida->FechaSalida }}
                         </div>
                         <div class="form-group">
-                            <strong>Observaciones:</strong>
-                            {{ $registrosalida->Observaciones }}
+                            <strong>Fechasalida:</strong>
+                            {{ $registrosalida->FechaEntrada }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Observaciones al registrar la salida:</strong>
+                            {{ $registrosalida->ObservacionesSalida }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Observaciones al registrar la entrada:</strong>
+                            {{ $registrosalida->ObservacionesEntrada }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Estado de la Herramienta</strong>
+                            {{ $registrosalida->Estado }}
                         </div>
 
                     </div>

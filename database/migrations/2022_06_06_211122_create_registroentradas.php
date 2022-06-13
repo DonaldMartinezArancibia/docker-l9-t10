@@ -21,8 +21,8 @@ return new class extends Migration
             $table->dateTime("FechaEntrada");
             $table->char("Observaciones");
             $table->timestamps();
-            $table->foreign("herramientas_id")->references("id")->on("herramientas")->onDelete("cascade");
-            $table->foreign("empleados_id")->references("id")->on("empleados")->onDelete("cascade");
+            $table->foreign("herramientas_id")->references("id")->on("herramientas")->onUpdate('cascade');
+            $table->foreign("empleados_id")->references("id")->on("empleados")->onUpdate('cascade');
         });
     }
 

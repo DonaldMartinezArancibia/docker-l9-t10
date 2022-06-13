@@ -16,11 +16,13 @@
             {{ Form::datetimelocal('FechaSalida', $registrosalida->FechaSalida, ['class' => 'form-control' . ($errors->has('FechaSalida') ? ' is-invalid' : ''), 'placeholder' => 'Fechasalida']) }}
             {!! $errors->first('FechaSalida', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
         <div class="form-group">
-            {{ Form::label('Observaciones') }}
-            {{ Form::text('Observaciones', $registrosalida->Observaciones, ['class' => 'form-control' . ($errors->has('Observaciones') ? ' is-invalid' : ''), 'placeholder' => 'Observaciones']) }}
-            {!! $errors->first('Observaciones', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('ObservacionesSalida') }}
+            {{ Form::text('ObservacionesSalida', $registrosalida->ObservacionesSalida, ['class' => 'form-control' . ($errors->has('ObservacionesSalida') ? ' is-invalid' : ''), 'placeholder' => 'ObservacionesSalida']) }}
+            {!! $errors->first('ObservacionesSalida', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+       
 
     </div>
     <div class="box-footer mt20">

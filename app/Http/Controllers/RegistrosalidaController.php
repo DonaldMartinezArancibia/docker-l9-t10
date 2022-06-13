@@ -34,9 +34,9 @@ class RegistrosalidaController extends Controller
     public function create()
     {
         $registrosalida = new Registrosalida();
-        $empleados=Empleado::select('Nombre','PrimerApellido')->paginate();
+        $empleados=Empleado::pluck('Nombre', 'id');
         $herramientas=Herramienta::pluck('Nombre', 'id');
-        return view('registrosalida.create', compact('registrosalida','herramientas'),compact('registrosalida','empleados'));
+        return view('registrosalida.create', compact('registrosalida','empleados'),compact('registrosalida','herramientas'));
     }
 
     /**
