@@ -31,6 +31,12 @@ class Registrosalida extends Model
 		'ObservacionesSalida' => 'required',
     ];
 
+    static $reglasDos = [
+        'FechaEntrada' => 'required',
+        'ObservacionesEntrada' => 'required',
+        'Estado' => 'required',
+    ];
+
     protected $perPage = 20;
 
     /**
@@ -38,7 +44,7 @@ class Registrosalida extends Model
      *
      * @var array
      */
-    protected $fillable = ['herramientas_id','empleados_id','FechaSalida','ObservacionesSalida'];
+    protected $fillable = ['herramientas_id','empleados_id','FechaSalida','FechaEntrada','ObservacionesSalida','ObservacionesEntrada','Estado'];
 
 
     /**

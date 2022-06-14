@@ -20,7 +20,7 @@
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('registrosalida.form')
+                            @include('registrosalida.formEntrada')
 
                         </form>
                     </div>
@@ -28,4 +28,11 @@
             </div>
         </div>
     </section>
+
+    <script>
+        var cursos = ['Html','Laravel','Css','JavaScript','React'];
+        $('#Search').autocomplete({
+            source: cursos
+        })
+    </script>
 @endsection

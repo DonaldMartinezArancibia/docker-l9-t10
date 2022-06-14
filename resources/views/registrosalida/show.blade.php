@@ -46,7 +46,12 @@
                         </div>
                         <div class="form-group">
                             <strong>Estado de la Herramienta</strong>
-                            {{ $registrosalida->Estado }}
+                            <?php 
+                            if($registrosalida->Estado == '1')
+                                { ?><div class="btn btn-success">Dentro</div><?php }
+                            else
+                                { ?><div class="btn btn-danger">Fuera</div><?php }
+                            ?>
                         </div>
 
                     </div>

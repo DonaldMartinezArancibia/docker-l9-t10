@@ -16,7 +16,6 @@
             {{ Form::datetimelocal('FechaSalida', $registrosalida->FechaSalida, ['class' => 'form-control' . ($errors->has('FechaSalida') ? ' is-invalid' : ''), 'placeholder' => 'Fechasalida']) }}
             {!! $errors->first('FechaSalida', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
         <div class="form-group">
             {{ Form::label('ObservacionesSalida') }}
             {{ Form::text('ObservacionesSalida', $registrosalida->ObservacionesSalida, ['class' => 'form-control' . ($errors->has('ObservacionesSalida') ? ' is-invalid' : ''), 'placeholder' => 'ObservacionesSalida']) }}

@@ -91,7 +91,7 @@ class RegistrosalidaController extends Controller
      */
     public function update(Request $request, Registrosalida $registrosalida)
     {
-        request()->validate(Registrosalida::$rules);
+        request()->validate(Registrosalida::$reglasDos);
 
         $registrosalida->update($request->all());
 

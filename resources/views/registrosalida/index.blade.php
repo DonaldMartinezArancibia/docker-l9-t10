@@ -36,6 +36,7 @@
                                     <tr>
                                         <th>No</th>
 										<th>Herramienta</th>
+                                        <th>Id Herramienta</th>
                                         <th>Empleado</th>
 										<th>Fecha de Salida</th>
                                         <th>Fecha de Entrada</th>
@@ -52,12 +53,13 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $registrosalida->herramienta->Nombre }}</td>
-                                            <td>{{ $registrosalida->empleado->Nombre; }} {{ $registrosalida->empleado->PrimerApellido; }} {{ $registrosalida->empleado->SegundoApellido; }}</td>
+                                            <td>{{ $registrosalida->herramienta->IdInterno }}</td>
+                                            <td>{{ $registrosalida->empleado->Nombre." ".$registrosalida->empleado->PrimerApellido." ".$registrosalida->empleado->SegundoApellido }}</td>
 											<td>{{ $registrosalida->FechaSalida }}</td>
                                             <td>{{ $registrosalida->FechaEntrada }}</td>
 											<td>{{ $registrosalida->ObservacionesSalida }}</td>
                                             <td>{{ $registrosalida->ObservacionesEntrada }}</td>
-                                            <td>{{ $registrosalida->Estado }}</td>
+                                            <td><?php if($registrosalida->Estado == '1'){ ?><div class="btn btn-success">Dentro</div><?php }else{ ?><div class="btn btn-danger">Fuera</div><?php } ?></td>
 
                                             <td>
                                                 <form action="{{ route('registrosalidas.destroy',$registrosalida->id) }}" method="POST">
