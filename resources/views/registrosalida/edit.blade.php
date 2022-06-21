@@ -28,11 +28,5 @@
             </div>
         </div>
     </section>
-
-    <script>
-        var cursos = ['Html','Laravel','Css','JavaScript','React'];
-        $('#Search').autocomplete({
-            source: cursos
-        })
-    </script>
+    
 @endsection

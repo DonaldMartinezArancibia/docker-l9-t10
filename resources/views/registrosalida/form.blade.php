@@ -1,15 +1,27 @@
 <div class="box box-info padding-1">
     <div class="box-body">
         
-        <div class="form-group">
-            {{ Form::label('herramientas') }}
-            {{ Form::select('herramientas_id',$herramientas, $registrosalida->herramientas_id, ['class' => 'form-control' . ($errors->has('herramientas_id') ? ' is-invalid' : ''), 'placeholder' => 'Herramienta']) }}
-            {!! $errors->first('herramientas_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+
         <div class="form-group">
             {{ Form::label('empleados') }}
-            {{ Form::select('empleados_id', $empleados, $registrosalida->empleados_id, ['class' => 'form-control' . ($errors->has('empleados_id') ? ' is-invalid' : ''), 'placeholder' => 'Empleados Id']) }}
+            <select name="empleados_id" id="Empleados_ID" class="form-control{{($errors->has('empleados_id') ? ' is-invalid' : '')}}">
+                <option value="" selected disabled hidden>Seleccionar Empleado</option>
+                @foreach($empleados as $data){
+                    <option value="{{$data->id}}">{{$data->Nombre." ".$data->PrimerApellido." ".$data->SegundoApellido}}</option>
+                }@endforeach
+            </select>
             {!! $errors->first('empleados_id', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+
+        <div class="form-group">
+            {{ Form::label('Herramientas') }}
+            <select name="herramientas_id" id="Herramientas_ID" class="form-control{{($errors->has('herramientas_id') ? ' is-invalid' : '')}}">
+                <option value="" selected disabled hidden>Seleccionar Herramienta</option>
+                @foreach($herramientas as $data){
+                    <option value="{{$data->id}}">{{$data->IdInterno." ".$data->Nombre." ".$data->Serie}}</option>
+                }@endforeach
+            </select>
+            {!! $errors->first('herramientas_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Fecha Salida') }}
@@ -28,3 +40,9 @@
         <button type="submit" class="btn btn-primary">Ingresar Salida</button>
     </div>
 </div>
+
+
+<script>
+    $("#Empleados_ID").select2({});
+    $("#Herramientas_ID").select2({});
+</script>

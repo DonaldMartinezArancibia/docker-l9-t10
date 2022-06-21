@@ -34,8 +34,10 @@ class RegistrosalidaController extends Controller
     public function create()
     {
         $registrosalida = new Registrosalida();
-        $empleados=Empleado::pluck('Nombre', 'id');
-        $herramientas=Herramienta::pluck('Nombre', 'id');
+        $empleados=Empleado::all('id','Nombre','PrimerApellido',"SegundoApellido");
+        $herramientas=Herramienta::all('id','Nombre','IdInterno','Serie');
+        // echo($empleados);
+        // dd($empleados);
         return view('registrosalida.create', compact('registrosalida','empleados'),compact('registrosalida','herramientas'));
     }
 
@@ -77,7 +79,7 @@ class RegistrosalidaController extends Controller
     public function edit($id)
     {
         $registrosalida = Registrosalida::find($id);
-        $empleados=Empleado::select('Nombre','PrimerApellido')->paginate();
+        $empleados=Empleado::paginate('Nombre','PrimerApellido');
         $herramientas=Herramienta::pluck('Nombre', 'id');
         return view('registrosalida.edit', compact('registrosalida','herramientas'),compact('registrosalida','empleados'));
     }
@@ -111,4 +113,5 @@ class RegistrosalidaController extends Controller
         return redirect()->route('registrosalidas.index')
             ->with('success', 'Registrosalida deleted successfully');
     }
+
 }

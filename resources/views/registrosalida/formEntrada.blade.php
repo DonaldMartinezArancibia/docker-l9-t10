@@ -28,3 +28,21 @@
 <div class="form-group">
     <input type="text" class="form-control" id="Search">
 </div>
+
+<script>
+    // var cursos = ['Html','Laravel','Css','JavaScript','React'];
+    $('#Search').autocomplete({
+        source: function(request, response){
+            $.ajax({
+                url: '{{route('buscar.herramienta')}}',
+                dataType: 'json',
+                data: {
+                    term: request.term
+                },
+                success: function(data){
+                    response(data)
+                }
+            });
+        }
+    });
+</script>
