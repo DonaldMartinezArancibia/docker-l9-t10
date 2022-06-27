@@ -31,7 +31,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table class="table table-striped table-hover" id="registros">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
@@ -73,4 +73,7 @@
             </div>
         </div>
     </div>
+    <script>
+        $("#registros").DataTable({});
+    </script>
 @endsection

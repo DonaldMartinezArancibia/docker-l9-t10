@@ -20,29 +20,6 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Ingresar Salida</button>
+        <button type="submit" class="btn btn-primary">Registrar la Entrada</button>
     </div>
-</div
-
-
-<div class="form-group">
-    <input type="text" class="form-control" id="Search">
 </div>
-
-<script>
-    // var cursos = ['Html','Laravel','Css','JavaScript','React'];
-    $('#Search').autocomplete({
-        source: function(request, response){
-            $.ajax({
-                url: '{{route('buscar.herramienta')}}',
-                dataType: 'json',
-                data: {
-                    term: request.term
-                },
-                success: function(data){
-                    response(data)
-                }
-            });
-        }
-    });
-</script>

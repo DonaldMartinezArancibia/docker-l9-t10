@@ -37,7 +37,7 @@ class Registrosalida extends Model
         'Estado' => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 90;
 
     /**
      * Attributes that should be mass-assignable.

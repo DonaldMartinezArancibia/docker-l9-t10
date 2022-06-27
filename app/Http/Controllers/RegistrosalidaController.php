@@ -26,6 +26,14 @@ class RegistrosalidaController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $registrosalidas->perPage());
     }
 
+    public function pIndex()
+    {
+        $registrosalidas = Registrosalida::paginate();
+
+        return view('index', compact('registrosalidas'))
+            ->with('i', (request()->input('page', 1) - 1) * $registrosalidas->perPage());
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -35,9 +43,7 @@ class RegistrosalidaController extends Controller
     {
         $registrosalida = new Registrosalida();
         $empleados=Empleado::all('id','Nombre','PrimerApellido',"SegundoApellido");
-        $herramientas=Herramienta::all('id','Nombre','IdInterno','Serie');
-        // echo($empleados);
-        // dd($empleados);
+        $herramientas=Herramienta::leftJoin('registrosalidas','herramientas_id','=','herramientas.id')->select('herramientas.id','herramientas.Nombre','herramientas.IdInterno','registrosalidas.Estado')->where('registrosalidas.Estado','=','1')->orWhereNull('registrosalidas.Estado')->get();
         return view('registrosalida.create', compact('registrosalida','empleados'),compact('registrosalida','herramientas'));
     }
 
@@ -79,7 +85,7 @@ class RegistrosalidaController extends Controller
     public function edit($id)
     {
         $registrosalida = Registrosalida::find($id);
-        $empleados=Empleado::paginate('Nombre','PrimerApellido');
+        $empleados=Empleado::select('Nombre','PrimerApellido')->paginate();
         $herramientas=Herramienta::pluck('Nombre', 'id');
         return view('registrosalida.edit', compact('registrosalida','herramientas'),compact('registrosalida','empleados'));
     }

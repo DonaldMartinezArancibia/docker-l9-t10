@@ -18,7 +18,7 @@
             <select name="herramientas_id" id="Herramientas_ID" class="form-control{{($errors->has('herramientas_id') ? ' is-invalid' : '')}}">
                 <option value="" selected disabled hidden>Seleccionar Herramienta</option>
                 @foreach($herramientas as $data){
-                    <option value="{{$data->id}}">{{$data->IdInterno." ".$data->Nombre." ".$data->Serie}}</option>
+                    <option value="{{$data->id}}">{{$data->id." ".$data->Nombre." ".$data->IdInterno}}</option>
                 }@endforeach
             </select>
             {!! $errors->first('herramientas_id', '<div class="invalid-feedback">:message</div>') !!}
