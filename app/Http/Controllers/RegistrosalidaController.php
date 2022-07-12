@@ -20,7 +20,7 @@ class RegistrosalidaController extends Controller
      */
     public function index()
     {
-        $registrosalidas = Registrosalida::paginate();
+        $registrosalidas = Registrosalida::where('EstadoRegistro','=','0')->paginate();
 
         return view('registrosalida.index', compact('registrosalidas'))
             ->with('i', (request()->input('page', 1) - 1) * $registrosalidas->perPage());
@@ -28,7 +28,7 @@ class RegistrosalidaController extends Controller
 
     public function pIndex()
     {
-        $registrosalidas = Registrosalida::paginate();
+        $registrosalidas = Registrosalida::where('EstadoRegistro','=','0')->paginate();
 
         return view('index', compact('registrosalidas'))
             ->with('i', (request()->input('page', 1) - 1) * $registrosalidas->perPage());
@@ -42,8 +42,8 @@ class RegistrosalidaController extends Controller
     public function create()
     {
         $registrosalida = new Registrosalida();
-        $empleados=Empleado::all('id','Nombre','PrimerApellido',"SegundoApellido");
-        $herramientas=Herramienta::leftJoin('registrosalidas','herramientas_id','=','herramientas.id')->select('herramientas.id','herramientas.Nombre','herramientas.IdInterno','registrosalidas.Estado')->where('registrosalidas.Estado','=','1')->orWhereNull('registrosalidas.Estado')->get();
+        $empleados=Empleado::all('id','Nombre','PrimerApellido','SegundoApellido');
+        $herramientas=Herramienta::all('id','IdInterno','Nombre','Serie','Estado')->where('Estado','=','1');
         return view('registrosalida.create', compact('registrosalida','empleados'),compact('registrosalida','herramientas'));
     }
 
@@ -58,6 +58,7 @@ class RegistrosalidaController extends Controller
         request()->validate(Registrosalida::$rules);
 
         $registrosalida = Registrosalida::create($request->all());
+        Herramienta::where('id','=',$registrosalida->herramienta->id)->update(['Estado'=>0]);
 
         return redirect()->route('registrosalidas.index')
             ->with('success', 'Registrosalida created successfully.');
@@ -102,6 +103,8 @@ class RegistrosalidaController extends Controller
         request()->validate(Registrosalida::$reglasDos);
 
         $registrosalida->update($request->all());
+        Herramienta::where('id','=',$registrosalida->herramienta->id)->update(['Estado'=>1]);
+        Registrosalida::where('id','=',$registrosalida->id)->update(['EstadoRegistro'=>1]);
 
         return redirect()->route('registrosalidas.index')
             ->with('success', 'Registrosalida updated successfully');

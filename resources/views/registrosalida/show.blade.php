@@ -47,7 +47,7 @@
                         <div class="form-group">
                             <strong>Estado de la Herramienta</strong>
                             <?php 
-                            if($registrosalida->Estado == '1')
+                            if($herramienta->Estado == '1')
                                 { ?><div class="btn btn-success">Dentro</div><?php }
                             else
                                 { ?><div class="btn btn-danger">Fuera</div><?php }

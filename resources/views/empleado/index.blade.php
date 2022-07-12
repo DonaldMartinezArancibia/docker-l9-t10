@@ -31,11 +31,12 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table class="table table-striped table-hover" id="registros">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
                                         
+										<th>Cedula</th>
 										<th>Nombre</th>
 										<th>Primerapellido</th>
 										<th>Segundoapellido</th>
@@ -48,17 +49,18 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
+											<td>{{ $empleado->Cedula }}</td>
 											<td>{{ $empleado->Nombre }}</td>
 											<td>{{ $empleado->PrimerApellido }}</td>
 											<td>{{ $empleado->SegundoApellido }}</td>
 
                                             <td>
-                                                <form action="{{ route('empleados.destroy',$empleado->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('empleados.show',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('empleados.edit',$empleado->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                <form action="{{ route('empleados.destroy',$empleado->id) }}" method="POST" class="formulario-eliminar">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('empleados.show',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('empleados.edit',$empleado->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -68,8 +70,50 @@
                         </div>
                     </div>
                 </div>
-                {!! $empleados->links() !!}
             </div>
         </div>
     </div>
+@if(session('success')=='Empleado deleted successfully')
+<script>    
+    Swal.fire(
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+</script>
+@endif
+    <script>
+        $("#registros").DataTable({
+            responsive:true,
+            autoWidth:false,
+            "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Nada encontrado - disculpa",
+            "info": "Mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(filtrado de _MAX_ registros totales)",
+            "search": "Buscar:",
+            "paginate": {
+                "next": "siguiente",
+                "previous": "Anterior"
+                }
+            }
+        });
+        $('.formulario-eliminar').submit(function(e){
+            e.preventDefault();
+            Swal.fire({
+              title: 'Are you sure?',
+              text: "You won't be able to revert this!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.submit();
+              }
+            })
+        });
+    </script>
 @endsection

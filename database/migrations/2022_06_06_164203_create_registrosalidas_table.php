@@ -22,10 +22,11 @@ return new class extends Migration
             $table->dateTime("FechaEntrada")->nullable();
             $table->char("ObservacionesSalida");
             $table->char("ObservacionesEntrada")->nullable();
-            $table->boolean("Estado")->default(0);
+            $table->boolean("EstadoRegistro")->default(0);
             $table->timestamps();
-            $table->foreign("herramientas_id")->references("id")->on("herramientas")->onDelete("cascade");
-            $table->foreign("empleados_id")->references("id")->on("empleados")->onDelete("cascade");
+            $table->softDeletes();
+            $table->foreign("herramientas_id")->references("id")->on("herramientas")->onUpdate("cascade");
+            $table->foreign("empleados_id")->references("id")->on("empleados")->onUpdate("cascade");
         });
     }
 

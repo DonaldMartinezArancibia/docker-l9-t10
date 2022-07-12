@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Registrosalida
@@ -23,7 +24,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Registrosalida extends Model
 {
-    
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
+
     static $rules = [
 		'herramientas_id' => 'required',
         'empleados_id' => 'required',
@@ -34,17 +37,16 @@ class Registrosalida extends Model
     static $reglasDos = [
         'FechaEntrada' => 'required',
         'ObservacionesEntrada' => 'required',
-        'Estado' => 'required',
     ];
 
-    protected $perPage = 90;
+    protected $perPage = 999;
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['herramientas_id','empleados_id','FechaSalida','FechaEntrada','ObservacionesSalida','ObservacionesEntrada','Estado'];
+    protected $fillable = ['herramientas_id','empleados_id','FechaSalida','FechaEntrada','ObservacionesSalida','ObservacionesEntrada'];
 
 
     /**

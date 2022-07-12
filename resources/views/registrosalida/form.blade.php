@@ -18,7 +18,7 @@
             <select name="herramientas_id" id="Herramientas_ID" class="form-control{{($errors->has('herramientas_id') ? ' is-invalid' : '')}}">
                 <option value="" selected disabled hidden>Seleccionar Herramienta</option>
                 @foreach($herramientas as $data){
-                    <option value="{{$data->id}}">{{$data->id." ".$data->Nombre." ".$data->IdInterno}}</option>
+                    <option value="{{$data->id}}">{{$data->id." ".$data->IdInterno." ".$data->Nombre." ".$data->Serie." ".$data->Factura}}</option>
                 }@endforeach
             </select>
             {!! $errors->first('herramientas_id', '<div class="invalid-feedback">:message</div>') !!}
@@ -32,6 +32,12 @@
             {{ Form::label('ObservacionesSalida') }}
             {{ Form::text('ObservacionesSalida', $registrosalida->ObservacionesSalida, ['class' => 'form-control' . ($errors->has('ObservacionesSalida') ? ' is-invalid' : ''), 'placeholder' => 'ObservacionesSalida']) }}
             {!! $errors->first('ObservacionesSalida', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group{{ $errors->has('active') ? ' has-error' : '' }}">
+            <label>Estado de la Herramienta</label>
+            <select class="form-control" name="herramientas_estado" id="Estado">
+                <option value="0" @if (old('active') == 0) selected @endif>Salida</option>
+            </select>
         </div>
        
 

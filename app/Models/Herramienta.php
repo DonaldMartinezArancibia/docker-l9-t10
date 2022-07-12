@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Herramienta
@@ -13,9 +14,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property $Nombre
  * @property $Modelo
  * @property $Categoria
+ * @property $Proovedor
  * @property $Factura
+ * @property $FechaCompra
+ * @property $Estado
  * @property $created_at
  * @property $updated_at
+ * @property $deleted_at
  *
  * @property Registrosalida[] $registrosalidas
  * @package App
@@ -23,14 +28,27 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Herramienta extends Model
 {
-    
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
+
     static $rules = [
 		'IdInterno' => ['required','unique:herramientas'],
-        'Serie' => ['required','unique:herramientas'],
+		'Serie' => ['required','unique:herramientas'],
 		'Nombre' => 'required',
 		'Modelo' => 'required',
 		'Categoria' => 'required',
-		'Factura' => ['required','unique:herramientas'],
+		'Proovedor',
+        'Factura' => ['required','unique:herramientas'],
+        'FechaCompra',
+    ];
+
+    static $reglasDos = [
+        'IdInterno' => ['unique:herramientas'],
+        'Nombre' => 'required',
+        'Modelo' => 'required',
+        'Categoria' => 'required',
+        'Proovedor',
+        'FechaCompra',
     ];
 
     protected $perPage = 20;
@@ -40,7 +58,7 @@ class Herramienta extends Model
      *
      * @var array
      */
-    protected $fillable = ['IdInterno','Serie','Nombre','Modelo','Categoria','Factura'];
+    protected $fillable = ['IdInterno','Serie','Nombre','Modelo','Categoria','Proovedor','Factura','FechaCompra'];
 
 
     /**
@@ -49,11 +67,6 @@ class Herramienta extends Model
     public function registrosalidas()
     {
         return $this->hasMany('App\Models\Registrosalida', 'herramientas_id', 'id');
-    }
-    
-    public function registroentradas()
-    {
-        return $this->hasMany('App\Models\Registroentrada', 'herramientas_id', 'id');
     }
     
 

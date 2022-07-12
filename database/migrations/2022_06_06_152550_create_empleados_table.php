@@ -17,10 +17,12 @@ return new class extends Migration
         Schema::create('empleados', function (Blueprint $table) {
             $table->engine="InnoDB";
             $table->bigIncrements('id');
+            $table->integer('Cedula');
             $table->string("Nombre");
             $table->string("PrimerApellido");
             $table->string("SegundoApellido");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

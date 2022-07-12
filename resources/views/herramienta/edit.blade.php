@@ -13,14 +13,14 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Actualizar Herramienta</span>
+                        <span class="card-title">Update Herramienta</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('herramientas.update', $herramienta->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('herramienta.form')
+                            @include('herramienta.formEdicion')
 
                         </form>
                     </div>

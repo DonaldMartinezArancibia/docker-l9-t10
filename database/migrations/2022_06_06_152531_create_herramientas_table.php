@@ -21,8 +21,12 @@ return new class extends Migration
             $table->char("Nombre");
             $table->char("Modelo");
             $table->char("Categoria");
+            $table->char("Proovedor")->nullable();
             $table->char("Factura");
+            $table->dateTime("FechaCompra")->nullable();
+            $table->boolean("Estado")->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

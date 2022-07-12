@@ -86,7 +86,7 @@ class HerramientaController extends Controller
      */
     public function update(Request $request, Herramienta $herramienta)
     {
-        request()->validate(Herramienta::$rules);
+        request()->validate(Herramienta::$reglasDos);
 
         $herramienta->update($request->all());
 
