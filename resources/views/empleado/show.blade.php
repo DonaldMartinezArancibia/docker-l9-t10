@@ -36,6 +36,10 @@
                             <strong>Segundoapellido:</strong>
                             {{ $empleado->SegundoApellido }}
                         </div>
+                        <div class="form-group">
+                            <strong>Correo:</strong>
+                            {{ $empleado->Correo }}
+                        </div>
 
                     </div>
                 </div>

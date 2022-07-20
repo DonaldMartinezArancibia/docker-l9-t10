@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Herramienta;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +33,8 @@ class HerramientaController extends Controller
     public function create()
     {
         $herramienta = new Herramienta();
-        return view('herramienta.create', compact('herramienta'));
+        $categorias=Categoria::all('id','Nombre');
+        return view('herramienta.create', compact('herramienta','categorias'));
     }
 
     /**
@@ -45,12 +47,20 @@ class HerramientaController extends Controller
     {
         request()->validate(Herramienta::$rules);
 
-        $herramienta = Herramienta::create($request->all());
+        $requestData = $request->all();
 
+        if ($request->file('Foto') != NULL) {
+            $fileName = $request->file('Foto')->getClientOriginalName();
+            $path = $request->file('Foto')->storeAs('uploads',$fileName,'public');
+            $requestData['Foto'] = '/storage/'.$path;
+            $herramienta = Herramienta::create($requestData);
+        } else {
+            $herramienta = Herramienta::create($request->all());
+        }
+        
         return redirect()->route('herramientas.index')
             ->with('success', 'Herramienta created successfully.');
     }
-
     /**
      * Display the specified resource.
      *
@@ -73,8 +83,9 @@ class HerramientaController extends Controller
     public function edit($id)
     {
         $herramienta = Herramienta::find($id);
-
-        return view('herramienta.edit', compact('herramienta'));
+        $categorias=Categoria::all('id','Nombre');
+        
+        return view('herramienta.edit', compact('herramienta','categorias'));
     }
 
     /**
@@ -88,7 +99,14 @@ class HerramientaController extends Controller
     {
         request()->validate(Herramienta::$reglasDos);
 
-        $herramienta->update($request->all());
+        if ($request->file('Foto') != NULL) {
+            $fileName = $request->file('Foto')->getClientOriginalName();
+            $path = $request->file('Foto')->storeAs('uploads',$fileName,'public');
+            $requestData['Foto'] = '/storage/'.$path;
+            $herramienta->update($requestData);
+        } else {
+            $herramienta->update($request->all());
+        }
 
         return redirect()->route('herramientas.index')
             ->with('success', 'Herramienta updated successfully');

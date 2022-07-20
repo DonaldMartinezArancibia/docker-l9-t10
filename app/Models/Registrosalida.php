@@ -32,6 +32,7 @@ class Registrosalida extends Model
         'empleados_id' => 'required',
 		'FechaSalida' => 'required',
 		'ObservacionesSalida' => 'required',
+        'Ubicacion' => 'required',
     ];
 
     static $reglasDos = [
@@ -46,7 +47,7 @@ class Registrosalida extends Model
      *
      * @var array
      */
-    protected $fillable = ['herramientas_id','empleados_id','FechaSalida','FechaEntrada','ObservacionesSalida','ObservacionesEntrada'];
+    protected $fillable = ['herramientas_id','empleados_id','Ubicacion','FechaSalida','FechaEntrada','ObservacionesSalida','ObservacionesEntrada'];
 
 
     /**

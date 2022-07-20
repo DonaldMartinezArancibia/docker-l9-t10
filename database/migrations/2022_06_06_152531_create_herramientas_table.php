@@ -20,13 +20,15 @@ return new class extends Migration
             $table->char("Serie");
             $table->char("Nombre");
             $table->char("Modelo");
-            $table->char("Categoria");
-            $table->char("Proovedor")->nullable();
+            $table->biginteger("categorias_id")->unsigned()->nullable();
+            $table->char("Proveedor")->nullable();
             $table->char("Factura");
-            $table->dateTime("FechaCompra")->nullable();
+            $table->date("FechaCompra")->nullable();
+            $table->char("Foto")->nullable();
             $table->boolean("Estado")->default(1);
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletesTz();
+            $table->foreign("categorias_id")->references("id")->on("categorias")->onUpdate("cascade")->onDelete("SET NULL");
         });
     }
 

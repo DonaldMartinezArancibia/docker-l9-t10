@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property $Nombre
  * @property $Modelo
  * @property $Categoria
- * @property $Proovedor
+ * @property $Proveedor
  * @property $Factura
  * @property $FechaCompra
  * @property $Estado
@@ -36,29 +36,31 @@ class Herramienta extends Model
 		'Serie' => ['required','unique:herramientas'],
 		'Nombre' => 'required',
 		'Modelo' => 'required',
-		'Categoria' => 'required',
-		'Proovedor',
+		'categorias_id' => 'required',
+		'Proveedor',
         'Factura' => ['required','unique:herramientas'],
         'FechaCompra',
+        'Foto',
     ];
 
     static $reglasDos = [
         'IdInterno' => ['unique:herramientas'],
         'Nombre' => 'required',
         'Modelo' => 'required',
-        'Categoria' => 'required',
-        'Proovedor',
+        'categorias_id' => 'required',
+        'Proveedor',
         'FechaCompra',
+        'Foto',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 999;
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['IdInterno','Serie','Nombre','Modelo','Categoria','Proovedor','Factura','FechaCompra'];
+    protected $fillable = ['IdInterno','Serie','Nombre','Modelo','categorias_id','Proveedor','Factura','FechaCompra','Foto'];
 
 
     /**
@@ -67,6 +69,10 @@ class Herramienta extends Model
     public function registrosalidas()
     {
         return $this->hasMany('App\Models\Registrosalida', 'herramientas_id', 'id');
+    }
+    public function categoria()
+    {
+        return $this->hasOne('App\Models\Categoria', 'id', 'categorias_id');
     }
     
 

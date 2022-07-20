@@ -40,6 +40,7 @@
 										<th>Nombre</th>
 										<th>Primerapellido</th>
 										<th>Segundoapellido</th>
+										<th>Correo</th>
 
                                         <th></th>
                                     </tr>
@@ -53,14 +54,15 @@
 											<td>{{ $empleado->Nombre }}</td>
 											<td>{{ $empleado->PrimerApellido }}</td>
 											<td>{{ $empleado->SegundoApellido }}</td>
+											<td>{{ $empleado->Correo }}</td>
 
                                             <td>
                                                 <form action="{{ route('empleados.destroy',$empleado->id) }}" method="POST" class="formulario-eliminar">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('empleados.show',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('empleados.edit',$empleado->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('empleados.edit',$empleado->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -76,8 +78,8 @@
 @if(session('success')=='Empleado deleted successfully')
 <script>    
     Swal.fire(
-      'Deleted!',
-      'Your file has been deleted.',
+      '¡Borrado!',
+      'El registro ha sido borrado con éxito.',
       'success'
     )
 </script>
@@ -94,7 +96,7 @@
             "infoFiltered": "(filtrado de _MAX_ registros totales)",
             "search": "Buscar:",
             "paginate": {
-                "next": "siguiente",
+                "next": "Siguiente",
                 "previous": "Anterior"
                 }
             }
@@ -102,13 +104,14 @@
         $('.formulario-eliminar').submit(function(e){
             e.preventDefault();
             Swal.fire({
-              title: 'Are you sure?',
-              text: "You won't be able to revert this!",
+              title: '¿Estás seguro?',
+              text: "¡No podrás retroceder esta acción!",
               icon: 'warning',
               showCancelButton: true,
               confirmButtonColor: '#3085d6',
               cancelButtonColor: '#d33',
-              confirmButtonText: 'Yes, delete it!'
+              confirmButtonText: '¡Sí, borrar!',
+              cancelButtonText: 'Cancelar'
             }).then((result) => {
               if (result.isConfirmed) {
                 this.submit();

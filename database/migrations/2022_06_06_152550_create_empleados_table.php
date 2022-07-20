@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string("Nombre");
             $table->string("PrimerApellido");
             $table->string("SegundoApellido");
+            $table->char("Correo")->nullable();
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletesTz();
         });
     }
 

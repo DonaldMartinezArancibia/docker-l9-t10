@@ -13,8 +13,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property $Nombre
  * @property $PrimerApellido
  * @property $SegundoApellido
+ * @property $Correo
  * @property $created_at
  * @property $updated_at
+ * @property $deleted_at
  *
  * @property Registrosalida[] $registrosalidas
  * @package App
@@ -24,12 +26,13 @@ class Empleado extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-    
+
     static $rules = [
 		'Cedula' => 'required',
 		'Nombre' => 'required',
 		'PrimerApellido' => 'required',
 		'SegundoApellido' => 'required',
+		'Correo',
     ];
 
     protected $perPage = 999;
@@ -39,7 +42,7 @@ class Empleado extends Model
      *
      * @var array
      */
-    protected $fillable = ['Cedula','Nombre','PrimerApellido','SegundoApellido'];
+    protected $fillable = ['Cedula','Nombre','PrimerApellido','SegundoApellido','Correo'];
 
 
     /**

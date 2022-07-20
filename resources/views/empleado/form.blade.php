@@ -21,9 +21,14 @@
             {{ Form::text('SegundoApellido', $empleado->SegundoApellido, ['class' => 'form-control' . ($errors->has('SegundoApellido') ? ' is-invalid' : ''), 'placeholder' => 'Segundoapellido']) }}
             {!! $errors->first('SegundoApellido', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <div class="form-group">
+            {{ Form::label('Correo') }}
+            {{ Form::text('Correo', $empleado->Correo, ['class' => 'form-control' . ($errors->has('Correo') ? ' is-invalid' : ''), 'placeholder' => 'Correo']) }}
+            {!! $errors->first('Correo', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Ingresar Empleado</button>
     </div>
 </div>

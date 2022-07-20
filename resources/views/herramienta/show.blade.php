@@ -38,11 +38,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Categoria:</strong>
-                            {{ $herramienta->Categoria }}
+                            {{ $herramienta->categoria->Nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Proovedor:</strong>
-                            {{ $herramienta->Proovedor }}
+                            <strong>Proveedor:</strong>
+                            {{ $herramienta->Proveedor }}
                         </div>
                         <div class="form-group">
                             <strong>Factura:</strong>
@@ -55,6 +55,10 @@
                         <div class="form-group">
                             <strong>Estado:</strong>
                             {{ $herramienta->Estado }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Estado:</strong>
+                            <img src="{{ $herramienta->Foto }}" width="50%">
                         </div>
 
                     </div>

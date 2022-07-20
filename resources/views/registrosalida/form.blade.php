@@ -12,7 +12,6 @@
             </select>
             {!! $errors->first('empleados_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
         <div class="form-group">
             {{ Form::label('Herramientas') }}
             <select name="herramientas_id" id="Herramientas_ID" class="form-control{{($errors->has('herramientas_id') ? ' is-invalid' : '')}}">
@@ -38,6 +37,11 @@
             <select class="form-control" name="herramientas_estado" id="Estado">
                 <option value="0" @if (old('active') == 0) selected @endif>Salida</option>
             </select>
+        </div>
+        <div class="form-group">
+            {{ Form::label('Ubicacion') }}
+            {{ Form::text('Ubicacion', $registrosalida->Ubicacion, ['class' => 'form-control' . ($errors->has('Ubicacion') ? ' is-invalid' : ''), 'placeholder' => 'Ubicacion']) }}
+            {!! $errors->first('Ubicacion', '<div class="invalid-feedback">:message</div>') !!}
         </div>
        
 
